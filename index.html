@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kanuku Vikas Sagar — Data Analyst and Junior Data Scientist portfolio.">
+  <meta name="theme-color" content="#080d1b">
+  <title>Kanuku Vikas Sagar | Data Portfolio</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080d1b;
+      --bg-soft: #0e172b;
+      --surface: #111d34;
+      --surface-2: #16243e;
+      --text: #f4f7ff;
+      --muted: #a7b4cc;
+      --accent: #9b8cff;
+      --accent-2: #43d5e8;
+      --line: rgba(183, 201, 235, .15);
+      --shadow: 0 24px 70px rgba(0, 0, 0, .28);
+      --success: #55d6a3;
+      --warning: #f4c66b;
+      --radius: 20px;
+      --max: 1160px;
+    }
+    body.light-theme {
+      color-scheme: light;
+      --bg: #f5f7fc;
+      --bg-soft: #edf1fa;
+      --surface: #ffffff;
+      --surface-2: #f0f3fb;
+      --text: #17213b;
+      --muted: #62708a;
+      --accent: #6b59d9;
+      --accent-2: #087f9c;
+      --line: rgba(23, 39, 75, .13);
+      --shadow: 0 24px 70px rgba(35, 53, 93, .10);
+      --success: #14885f;
+      --warning: #a06a08;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7; overflow-x: hidden; transition: background .25s, color .25s;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .container { width: min(var(--max), 90%); margin-inline: auto; }
+    .section { padding: 94px 0; }
+    .section-head { max-width: 740px; margin-bottom: 34px; }
+    .eyebrow { color: var(--accent-2); font-size: .75rem; font-weight: 800; letter-spacing: .19em; text-transform: uppercase; margin-bottom: 10px; }
+    h1, h2, h3, h4 { line-height: 1.18; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.35rem); letter-spacing: -.065em; }
+    h2 { font-size: clamp(2rem, 4.5vw, 3rem); letter-spacing: -.045em; margin-bottom: 12px; }
+    h3 { font-size: 1.2rem; }
+    .lead, .section-subtitle { color: var(--muted); }
+    .section-subtitle { max-width: 700px; }
+    .gradient-text { background: linear-gradient(105deg, var(--accent), var(--accent-2)); color: transparent; -webkit-background-clip: text; background-clip: text; }
+    .glow { position: fixed; z-index: -1; width: 330px; height: 330px; filter: blur(120px); opacity: .17; border-radius: 50%; pointer-events: none; }
+    .glow.one { top: 70px; left: -180px; background: #795bff; }
+    .glow.two { top: 460px; right: -190px; background: #00c8dc; }
+
+    /* Navigation */
+    .site-header { position: sticky; top: 0; z-index: 100; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 900; font-size: 1.35rem; letter-spacing: -.06em; }
+    .brand span { color: var(--accent-2); }
+    .nav-links { display: flex; list-style: none; align-items: center; gap: 25px; }
+    .nav-links a { color: var(--muted); font-size: .9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent-2); }
+    .nav-actions { display: flex; align-items: center; gap: 9px; }
+    .icon-btn { border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 11px; padding: 9px 12px; }
+    .menu-btn { display: none; }
+
+    /* Buttons */
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 12px 19px; border-radius: 12px; border: 1px solid transparent; font-weight: 750; font-size: .9rem; transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { color: #fff; background: linear-gradient(110deg, #7964ec, #168fae); box-shadow: 0 12px 30px rgba(100, 93, 219, .24); }
+    .btn-secondary { background: var(--surface); border-color: var(--line); color: var(--text); }
+    .text-link { color: var(--accent-2); font-weight: 700; }
+
+    /* Hero */
+    .hero { min-height: 690px; display: grid; grid-template-columns: 1.13fr .87fr; gap: 48px; align-items: center; padding-block: 78px 90px; }
+    .availability { display: inline-flex; align-items: center; gap: 9px; padding: 7px 13px; border-radius: 30px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: .78rem; margin-bottom: 24px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 12px var(--success); }
+    .hero h1 { margin-bottom: 17px; }
+    .role-line { min-height: 42px; font-size: clamp(1.15rem, 2.3vw, 1.5rem); color: var(--muted); margin-bottom: 18px; }
+    .cursor { color: var(--accent-2); animation: blink .75s steps(2, start) infinite; }
+    @keyframes blink { to { visibility: hidden; } }
+    .hero-copy { max-width: 620px; color: var(--muted); margin-bottom: 26px; }
+    .hero-ctas, .socials { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .socials { gap: 20px; margin-top: 25px; color: var(--muted); font-size: .9rem; }
+    .socials a:hover { color: var(--accent-2); }
+    .hero-visual { position: relative; min-height: 385px; display: grid; place-items: center; }
+    .analytics-card { width: min(100%, 410px); padding: 25px; border-radius: 25px; background: linear-gradient(145deg, var(--surface), var(--bg-soft)); border: 1px solid var(--line); box-shadow: var(--shadow); animation: float 5s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
+    .analytics-top, .analytics-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .analytics-top small, .analytics-bottom { color: var(--muted); font-size: .75rem; }
+    .analytics-chart { height: 185px; display: flex; align-items: end; justify-content: space-around; gap: 13px; border-bottom: 1px solid var(--line); padding: 18px 5px 8px; margin: 20px 0 12px; }
+    .analytics-bar { width: 13%; border-radius: 9px 9px 2px 2px; background: linear-gradient(to top, #735ce6, #45d0e5); transform-origin: bottom; animation: grow 1.2s ease-out both; }
+    @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    .floating-chip { position: absolute; right: -3px; bottom: 17px; padding: 12px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 13px; box-shadow: var(--shadow); font-size: .78rem; }
+
+    /* Shared cards */
+    .surface-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 25px; transition: transform .25s, border-color .25s; }
+    .surface-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 65%, var(--line)); }
+    .about-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 20px; }
+    .about-copy p { color: var(--muted); margin-top: 12px; }
+    .detail-row { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .detail-row:last-child { border-bottom: 0; }
+    .detail-row small { display: block; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; font-size: .68rem; }
+    .detail-row strong { font-size: .93rem; }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .skill-card h3 { margin-bottom: 15px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { display: inline-flex; padding: 6px 10px; border-radius: 8px; background: var(--bg-soft); border: 1px solid var(--line); color: var(--muted); font-size: .75rem; }
+
+    /* Projects */
+    .filters { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 24px; }
+    .filter-btn { color: var(--muted); border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 9px 14px; font-size: .82rem; }
+    .filter-btn.active, .filter-btn:hover { color: #fff; border-color: transparent; background: linear-gradient(110deg, #7964ec, #168fae); }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 19px; align-items: start; }
+    .project-card { min-width: 0; }
+    .project-card.is-hidden { display: none; }
+    .project-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: linear-gradient(135deg, #7964ec, #168fae); color: white; font-size: 1.35rem; margin-bottom: 17px; }
+    .project-card h3 { margin-bottom: 10px; }
+    .project-card > p { color: var(--muted); font-size: .9rem; margin-bottom: 14px; }
+    .result-line { color: var(--accent-2); font-weight: 800; font-size: .82rem; margin-bottom: 15px; }
+    .project-details { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 14px; }
+    .project-details summary { cursor: pointer; color: var(--accent-2); font-weight: 800; font-size: .86rem; list-style: none; }
+    .project-details summary::-webkit-details-marker { display: none; }
+    .project-details summary::after { content: "＋"; float: right; }
+    .project-details[open] summary::after { content: "−"; }
+    .case-content { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 5px; }
+    .case-content h4 { color: var(--accent-2); margin: 20px 0 8px; font-size: .94rem; }
+    .case-content p, .case-content li { color: var(--muted); font-size: .84rem; }
+    .case-content ul { padding-left: 20px; margin: 7px 0 13px; }
+    .case-content li { padding: 2px 0; }
+    .note { border-left: 3px solid var(--warning); background: var(--bg-soft); border-radius: 7px; padding: 10px 12px; margin-top: 10px; }
+    .metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 13px 0; }
+    .metric { padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-soft); }
+    .metric strong { display: block; color: var(--accent-2); font-size: 1.25rem; overflow-wrap: anywhere; }
+    .metric span { color: var(--muted); font-size: .72rem; }
+
+    /* HR dashboard preview */
+    .hr-dashboard { background: #101a30; color: #f2f6ff; border: 1px solid #2b3b59; border-radius: 16px; padding: 16px; margin-top: 15px; overflow: hidden; }
+    .hr-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .hr-head small { color: #55d4e9; font-size: .65rem; letter-spacing: .12em; font-weight: 800; }
+    .hr-head h4 { color: #fff; font-size: 1.08rem; margin-top: 4px; }
+    .mock-label { color: #e6dfff; background: #33295c; border-radius: 20px; padding: 5px 9px; font-size: .65rem; }
+    .hr-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .hr-kpi { background: #1a2945; border: 1px solid #2e4364; border-radius: 10px; padding: 11px 9px; }
+    .hr-kpi small, .hr-kpi span { display: block; color: #acbdd7; font-size: .61rem; }
+    .hr-kpi strong { display: block; font-size: 1.35rem; color: #fff; margin: 6px 0 2px; }
+    .hr-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 9px; }
+    .hr-chart { background: #1a2945; border: 1px solid #2e4364; padding: 13px; border-radius: 10px; min-width: 0; }
+    .hr-chart h5 { color: #fff; font-size: .8rem; }
+    .hr-chart p { color: #9fb0ca; font-size: .65rem; }
+    .hr-bars { display: grid; gap: 13px; margin: 20px 0 13px; }
+    .hr-bar-row { display: grid; grid-template-columns: 42px 1fr; align-items: center; gap: 8px; color: #d0d9e9; font-size: .65rem; }
+    .hr-track { height: 9px; background: #35435e; border-radius: 20px; overflow: hidden; }
+    .hr-track i { display: block; height: 100%; background: linear-gradient(90deg, #8a72fa, #39cde0); border-radius: inherit; }
+    .donut-wrap { min-height: 128px; display: flex; justify-content: center; align-items: center; gap: 15px; }
+    .donut { width: 100px; height: 100px; flex: 0 0 auto; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(#8872fa 0 46%, #36c8dd 46% 76%, #536b91 76% 100%); }
+    .donut::after { content: "HR DATA"; display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; background: #1a2945; color: #fff; font-size: .61rem; font-weight: 800; }
+    .legend { display: grid; gap: 7px; color: #bdcbe0; font-size: .62rem; }
+    .hr-foot { color: #9fb0ca; font-size: .62rem; margin-top: 8px; }
+    .hr-filters { background: #1a2945; border: 1px solid #2e4364; padding: 12px; border-radius: 10px; margin-top: 9px; }
+    .hr-filters strong { display: block; color: #fff; font-size: .72rem; margin-bottom: 8px; }
+    .hr-filter-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .hr-filter-pills span { background: #2b3b59; color: #d0d9e9; border-radius: 6px; padding: 4px 8px; font-size: .61rem; }
+
+    /* Education, experience, contact */
+    .timeline-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; }
+    .timeline-card p { color: var(--muted); font-size: .88rem; margin-top: 5px; }
+    .timeline-date { display: inline-block; color: var(--accent-2); font-weight: 800; font-size: .75rem; margin-bottom: 10px; }
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 18px; }
+    .contact-items { display: grid; gap: 10px; margin-top: 18px; }
+    .contact-item { padding: 14px; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; }
+    .contact-item small { color: var(--muted); display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; }
+    .contact-item a { font-size: .88rem; overflow-wrap: anywhere; }
+    .contact-item a:hover { color: var(--accent-2); }
+    .contact-form { display: grid; gap: 12px; }
+    .contact-form input, .contact-form textarea { width: 100%; border: 1px solid var(--line); outline: none; background: var(--bg-soft); color: var(--text); border-radius: 11px; padding: 13px 14px; }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea { min-height: 135px; resize: vertical; }
+    .form-note { color: var(--muted); font-size: .72rem; margin-top: 10px; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: .8rem; text-align: center; }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(23px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; position: absolute; left: 5%; right: 5%; top: 75px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px; flex-direction: column; align-items: stretch; gap: 0; box-shadow: var(--shadow); }
+      .nav-links.open { display: flex; }
+      .nav-links a { display: block; padding: 10px 12px; }
+      .menu-btn { display: inline-flex; }
+      .hero { grid-template-columns: 1fr; text-align: center; min-height: 0; }
+      .hero-copy { margin-inline: auto; }
+      .hero-ctas, .socials { justify-content: center; }
+      .hero-visual { min-height: 340px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .section { padding: 68px 0; }
+      .projects-grid, .skills-grid, .timeline-grid { grid-template-columns: 1fr; }
+      .hr-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hr-charts { grid-template-columns: 1fr; }
+      .hero { padding-top: 55px; }
+      .floating-chip { right: 0; }
+      .surface-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow one"></div><div class="glow two"></div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home">VIKAS<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li><li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li>
+        <li><a href="#journey">Journey</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch colour theme">☀ Light</button>
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div class="reveal">
+        <div class="availability"><span class="dot"></span> Open to entry-level opportunities</div>
+        <p class="eyebrow">Hello, I am</p>
+        <h1>Kanuku Vikas<br><span class="gradient-text">Sagar.</span></h1>
+        <div class="role-line">I am a <span class="gradient-text" id="typedRole">Data Analyst</span><span class="cursor"> |</span></div>
+        <p class="hero-copy">BCA graduate passionate about Data Analytics, Data Science and Machine Learning. I enjoy exploring data, finding useful patterns and communicating insights through Python, SQL, Excel and Power BI.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#projects">Explore my projects ↗</a>
+          <a class="btn btn-secondary" href="#contact">Contact me</a>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/vikassagarkanuku55-max" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/vikas-sagar-kanuku-7605302b8" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="mailto:vikassagarkanuku55@gmail.com">Email ↗</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal" aria-label="Decorative data analytics chart">
+        <div class="analytics-card">
+          <div class="analytics-top"><strong>Data & Insights</strong><small>MY TOOLKIT</small></div>
+          <div class="analytics-chart" aria-hidden="true">
+            <div class="analytics-bar" style="height:42%"></div><div class="analytics-bar" style="height:69%"></div>
+            <div class="analytics-bar" style="height:54%"></div><div class="analytics-bar" style="height:88%"></div>
+            <div class="analytics-bar" style="height:64%"></div>
+          </div>
+          <div class="analytics-bottom"><span>Python</span><span>SQL</span><span>Power BI</span></div>
+        </div>
+        <div class="floating-chip">✦ Learning • Building • Improving</div>
+      </div>
+    </section>
+
+    <section class="section" id="about"><div class="container reveal">
+      <div class="section-head"><p class="eyebrow">A little introduction</p><h2>About <span class="gradient-text">Me</span></h2><p class="section-subtitle">My education, interests and career direction.</p></div>
+      <div class="about-grid">
+        <div class="surface-card about-copy">
+          <h3>My Introduction</h3>
+          <p>I am Kanuku Vikas Sagar, a Bachelor of Computer Applications graduate from Mohan Babu University. I have hands-on knowledge of Python, SQL, Excel, Power BI and Machine Learning.</p>
+          <p>I have worked on projects involving data cleaning, exploratory data analysis, visualization and predictive modelling. I am looking for an entry-level Data Analyst or Junior Data Scientist opportunity where I can apply my skills and continue learning.</p>
+        </div>
+        <div class="surface-card">
+          <h3>Profile Details</h3>
+          <div class="detail-row"><small>Education</small><strong>BCA — Mohan Babu University</strong></div>
+          <div class="detail-row"><small>Graduation period</small><strong>2023–2026</strong></div>
+          <div class="detail-row"><small>CGPA</small><strong>8.0</strong></div>
+          <div class="detail-row"><small>Location</small><strong>Ternekal, Kurnool District, Andhra Pradesh</strong></div>
+          <div class="detail-row"><small>Languages</small><strong>Telugu, English, Hindi</strong></div>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="section" id="skills"><div class="container reveal">
+      <div class="section-head"><p class="eyebrow">Tools I use</p><h2>Technical <span class="gradient-text">Skills</span></h2><p class="section-subtitle">Technologies and methods listed in my current resume.</p></div>
+      <div class="skills-grid">
+        <div class="surface-card skill-card"><h3>⌨ Programming & Libraries</h3><div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span></div></div>
+        <div class="surface-card skill-card"><h3>▤ Database</h3><div class="tags"><span class="tag">SQL</span><span class="tag">MySQL</span></div></div>
+        <div class="surface-card skill-card"><h3>◫ BI & Visualization</h3><div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Excel</span></div></div>
+        <div class="surface-card skill-card"><h3>✦ Machine Learning</h3><div class="tags"><span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">Predictive Modelling</span></div></div>
+        <div class="surface-card skill-card"><h3>▧ Analytics</h3><div class="tags"><span class="tag">Data Cleaning</span><span class="tag">EDA</span><span class="tag">Data Visualization</span></div></div>
+        <div class="surface-card skill-card"><h3>⌘ Development Tools</h3><div class="tags"><span class="tag">Jupyter Notebook</span><span class="tag">VS Code</span></div></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="projects"><div class="container reveal">
+      <div class="section-head"><p class="eyebrow">Selected work</p><h2>Project <span class="gradient-text">Case Studies</span></h2><p class="section-subtitle">Open each project to read its objective, data, EDA, preprocessing, modelling workflow, evaluation and intended prediction.</p></div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all" type="button">All projects</button>
+        <button class="filter-btn" data-filter="ml" type="button">Machine Learning</button>
+        <button class="filter-btn" data-filter="analysis" type="button">Data Analysis</button>
+        <button class="filter-btn" data-filter="bi" type="button">Power BI</button>
+      </div>
+      <div class="projects-grid">
+
+        <article class="surface-card project-card" data-category="ml analysis">
+          <div class="project-icon">⌂</div><h3>House Price Prediction & Analysis</h3>
+          <p>Regression project using property features to estimate house sale prices.</p>
+          <div class="result-line">Recorded notebook results: R² 0.9181 · MAE $15,517.48</div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">XGBoost</span></div>
+          <details class="project-details"><summary>Read full project details</summary><div class="case-content">
+            <h4>1. Problem statement</h4><p>Analyze house characteristics and build a regression model that estimates the sale price of a property.</p>
+            <h4>2. Dataset description</h4><ul><li>Ames Housing dataset.</li><li>1,460 records and 81 columns in the notebook context.</li><li>Target variable: SalePrice.</li></ul>
+            <h4>3. Technologies used</h4><ul><li>Python, Pandas and NumPy for data handling.</li><li>Matplotlib and Seaborn for EDA and visualizations.</li><li>Scikit-learn preprocessing tools and evaluation metrics.</li><li>XGBoost regression model; Jupyter Notebook for development.</li></ul>
+            <h4>4. Exploratory data analysis (EDA)</h4><ul><li>Review shape, column names, data types and summary statistics.</li><li>Inspect missing values and categorical features.</li><li>Study SalePrice distribution and relationships with numerical features.</li><li>Explore correlations and feature importance.</li><li>The notebook's feature-importance review identified OverallQual and GarageCars among leading features.</li></ul>
+            <h4>5. Data cleaning and preprocessing</h4><ul><li>Handle missing values.</li><li>Separate numerical and categorical columns.</li><li>Apply suitable preprocessing and categorical encoding in a pipeline.</li><li>Prepare input features (X) and target (y = SalePrice).</li></ul>
+            <h4>6. Train-test split</h4><p>The workflow separates observations into training data for fitting and test data for evaluating performance on held-out records.</p><p class="note">Check your original notebook for the exact test-size percentage, random state and split configuration before publishing those values.</p>
+            <h4>7. Model building</h4><p>The recorded workflow uses an XGBoost regression model with numerical and categorical preprocessing.</p>
+            <h4>8. Model evaluation</h4><div class="metrics"><div class="metric"><strong>0.9181</strong><span>Recorded R² score</span></div><div class="metric"><strong>$15,517.48</strong><span>Recorded mean absolute error</span></div></div><p>RMSE recorded in the notebook context: approximately $25,058. These are the results reported for that notebook run, not a guarantee of future prediction performance.</p>
+            <h4>9. Final prediction</h4><p>The trained regression pipeline accepts property feature values and outputs an estimated sale price. This is a model estimate, not a property valuation or guarantee.</p>
+            <h4>10. Conclusion</h4><p>The project demonstrates a regression workflow covering data understanding, cleaning, EDA, categorical and numerical preprocessing, model training and evaluation.</p>
+          </div></details>
+        </article>
+
+        <article class="surface-card project-card" data-category="ml analysis">
+          <div class="project-icon">▤</div><h3>Home Credit Loan Default Prediction</h3>
+          <p>Classification workflow exploring loan applications and credit-history information to understand default-related patterns.</p>
+          <div class="result-line">Recorded best ROC-AUC: 0.7508</div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">Classification</span></div>
+          <details class="project-details"><summary>Read full project details</summary><div class="case-content">
+            <h4>1. Problem statement</h4><p>Analyze loan application and credit-history data and identify patterns associated with a customer's loan outcome.</p>
+            <h4>2. Dataset description</h4><ul><li>Domain: credit and loan applications.</li><li>Data includes loan-application and credit-history information.</li><li>Problem type: classification.</li><li>Target: loan repayment/default outcome, as defined in the dataset.</li></ul>
+            <h4>3. Technologies used</h4><ul><li>Python, Pandas and NumPy.</li><li>Matplotlib and Seaborn for visual analysis.</li><li>Scikit-learn for modelling and evaluation.</li><li>Jupyter Notebook for workflow development.</li></ul>
+            <h4>4. Exploratory data analysis (EDA)</h4><ul><li>Review dataset shape, data types and summary statistics.</li><li>Inspect missing values and duplicate records.</li><li>Explore distributions of customer, application and credit variables.</li><li>Compare features with the target outcome.</li><li>Check class balance before model evaluation.</li></ul>
+            <h4>5. Data cleaning and preprocessing</h4><ul><li>Prepare feature columns and target label.</li><li>Review missing and categorical values.</li><li>Transform features as required by the selected algorithms.</li><li>Check for class imbalance and avoid data leakage.</li></ul>
+            <h4>6. Train-test split</h4><p>Separate data into training and testing portions. For a classification problem, stratification may be appropriate when preserving class proportions.</p><p class="note">Exact split ratio, random state and preprocessing configuration need confirmation from the original notebook.</p>
+            <h4>7. Model building and comparison</h4><p>The project evaluated classification models to identify patterns associated with loan default.</p><p class="note">The resume gives the best ROC-AUC but does not name the winning algorithm or list every model tested. Add those from the notebook rather than guessing.</p>
+            <h4>8. Model evaluation</h4><div class="metrics"><div class="metric"><strong>0.7508</strong><span>Recorded best ROC-AUC</span></div></div><p>For a fuller review, include the confusion matrix, precision, recall, F1-score and ROC curve if these were calculated in the notebook.</p>
+            <h4>9. Final prediction</h4><p>A fitted classifier can estimate the probability of the target loan outcome for a new application. The predicted class depends on the decision threshold selected for the model.</p>
+            <h4>10. Conclusion</h4><p>This work demonstrates credit-data exploration, classification modelling and ROC-AUC-based evaluation. Model predictions should support analysis, not be treated as the sole basis for lending decisions.</p>
+          </div></details>
+        </article>
+
+        <article class="surface-card project-card" data-category="ml">
+          <div class="project-icon">❀</div><h3>Rice Leaf Disease Classification</h3>
+          <p>Image-classification project exploring three rice leaf disease categories and image augmentation approaches.</p>
+          <div class="result-line">119 images · 3 disease classes (resume-reported)</div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Image Data</span><span class="tag">Augmentation</span><span class="tag">Classification</span></div>
+          <details class="project-details"><summary>Read full project details</summary><div class="case-content">
+            <h4>1. Problem statement</h4><p>Explore rice leaf images and develop a workflow for classifying images into disease categories.</p>
+            <h4>2. Dataset description</h4><ul><li>119 images, as stated in the resume.</li><li>Bacterial Leaf Blight.</li><li>Brown Spot.</li><li>Leaf Smut.</li></ul>
+            <h4>3. Tools and methods</h4><ul><li>Python for project development.</li><li>Image inspection and preprocessing.</li><li>Data augmentation approaches were reviewed.</li></ul>
+            <h4>4. EDA</h4><ul><li>Inspect sample leaf images.</li><li>Review image counts by class.</li><li>Check image dimensions, formats and quality.</li><li>Look for class imbalance and image variation.</li></ul>
+            <h4>5. Preprocessing</h4><ul><li>Standardize image size and input format as required by the model.</li><li>Prepare class labels.</li><li>Review augmentation techniques for training images.</li></ul>
+            <h4>6. Train, validation and test data</h4><p>Images should be separated into training, validation and test groups so model fitting and final evaluation use distinct data.</p><p class="note">Exact image counts per split, model architecture and training configuration were not supplied in the resume.</p>
+            <h4>7. Model evaluation</h4><p>Use a confusion matrix, per-class precision/recall and overall accuracy when available. No verified final accuracy is stated in the current resume.</p>
+            <h4>8. Final prediction</h4><p>The intended output is one of the three classes: Bacterial Leaf Blight, Brown Spot or Leaf Smut.</p>
+            <h4>9. Conclusion</h4><p>This project explores an image-classification workflow for rice leaf disease categories. The final model and evaluation results should be added after checking the project notebook.</p>
+          </div></details>
+        </article>
+
+        <article class="surface-card project-card" data-category="ml analysis">
+          <div class="project-icon">▥</div><h3>Portuguese Bank Marketing Analysis</h3>
+          <p>Customer and campaign analysis with a predictive workflow related to term-deposit subscriptions.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">EDA</span></div>
+          <details class="project-details"><summary>Read full project details</summary><div class="case-content">
+            <h4>1. Problem statement</h4><p>Explore bank marketing campaign information and identify patterns related to whether a customer subscribes to a term deposit.</p>
+            <h4>2. Dataset description</h4><ul><li>Domain: Portuguese bank marketing.</li><li>Data: customer and campaign information.</li><li>Target: term-deposit subscription outcome.</li><li>Problem type: predictive classification workflow.</li></ul>
+            <h4>3. Technologies used</h4><ul><li>Python and Pandas for data preparation.</li><li>Visualization tools for EDA.</li><li>Scikit-learn for predictive modelling.</li></ul>
+            <h4>4. Exploratory data analysis</h4><ul><li>Review customer and campaign variables.</li><li>Check data types, missing values and distributions.</li><li>Explore numerical and categorical feature patterns.</li><li>Compare campaign/customer segments with subscription outcome.</li></ul>
+            <h4>5. Data preprocessing</h4><ul><li>Prepare numerical and categorical input features.</li><li>Encode categorical variables where needed.</li><li>Separate features and target outcome.</li></ul>
+            <h4>6. Train-test split and model building</h4><p>Split data into training and test portions, fit classification model(s), and compare their performance on held-out data.</p><p class="note">The current resume does not list the split ratio, algorithm names or model metrics. Confirm these from the notebook before adding numerical claims.</p>
+            <h4>7. Evaluation and final prediction</h4><p>Evaluate the chosen model with suitable classification metrics. The intended prediction is whether a customer subscribes to a term deposit (Yes/No).</p>
+            <h4>8. Business interpretation</h4><p>Use analysis to understand customer and campaign patterns. Any recommendations should be supported by findings from the actual notebook.</p>
+            <h4>9. Conclusion</h4><p>This project connects customer/campaign EDA with a predictive modelling workflow for bank marketing.</p>
+          </div></details>
+        </article>
+
+        <article class="surface-card project-card" data-category="bi analysis">
+          <div class="project-icon">◫</div><h3>HR Analytics Dashboard</h3>
+          <p>Power BI dashboard with employee KPIs and visual analysis of workforce and attrition-related patterns.</p>
+          <div class="result-line">Power BI · DAX · Workforce analysis</div>
+          <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">Dashboard</span></div>
+          <details class="project-details"><summary>Read full project and dashboard preview</summary><div class="case-content">
+            <h4>1. Business problem</h4><p>Present workforce information and attrition-related patterns in a dashboard that helps HR users explore employee data.</p>
+            <h4>2. Tools used</h4><ul><li>Power BI for dashboard creation.</li><li>Power Query for data preparation.</li><li>DAX for calculated measures.</li><li>Charts, slicers and interactive report elements.</li></ul>
+            <h4>3. Data preparation</h4><ul><li>Review source columns and data types.</li><li>Check missing values and duplicates.</li><li>Standardize category labels if required.</li><li>Validate the employee and attrition fields.</li></ul>
+            <h4>4. EDA and analysis</h4><ul><li>Review employee distribution.</li><li>Explore employee counts by department.</li><li>Examine attrition-related patterns.</li><li>Compare workforce measures across available categories.</li></ul>
+            <h4>5. KPI measures to show</h4><ul><li>Total employees.</li><li>Active employees.</li><li>Employees who left.</li><li>Attrition rate.</li><li>Average tenure, if the source data includes a suitable field.</li></ul>
+            <h4>6. Dashboard visualizations</h4><ul><li>Employee count by department.</li><li>Attrition by department and job role.</li><li>Workforce distribution visuals.</li><li>Slicers for department, job role and other available fields.</li></ul>
+            <h4>7. Review and business interpretation</h4><p>The report can help HR users inspect workforce distribution and identify areas for further attrition analysis. Add specific findings only after checking the actual report.</p>
+            <p class="note">The dashboard below is a design mock-up. It intentionally uses dashes instead of invented employee counts or attrition rates. Its decorative chart shapes do not represent measured values.</p>
+            <div class="hr-dashboard" aria-label="Illustrative HR dashboard layout">
+              <div class="hr-head"><div><small>POWER BI · DASHBOARD PREVIEW</small><h4>HR Workforce Overview</h4></div><span class="mock-label">ILLUSTRATIVE MOCK-UP</span></div>
+              <div class="hr-kpis">
+                <div class="hr-kpi"><small>Total employees</small><strong>--</strong><span>Add actual KPI</span></div>
+                <div class="hr-kpi"><small>Active employees</small><strong>--</strong><span>Add actual KPI</span></div>
+                <div class="hr-kpi"><small>Employees left</small><strong>--</strong><span>Add actual KPI</span></div>
+                <div class="hr-kpi"><small>Attrition rate</small><strong>--</strong><span>Add actual KPI</span></div>
+              </div>
+              <div class="hr-charts">
+                <div class="hr-chart"><h5>Employee distribution</h5><p>Example chart layout · no actual values</p><div class="hr-bars">
+                  <div class="hr-bar-row"><span>Sales</span><div class="hr-track"><i style="width:72%"></i></div></div>
+                  <div class="hr-bar-row"><span>R&amp;D</span><div class="hr-track"><i style="width:86%"></i></div></div>
+                  <div class="hr-bar-row"><span>HR</span><div class="hr-track"><i style="width:36%"></i></div></div>
+                </div><small class="hr-foot">Decorative bars only — replace with report data.</small></div>
+                <div class="hr-chart"><h5>Attrition analysis</h5><p>Example visual layout · no actual values</p><div class="donut-wrap"><div class="donut"></div><div class="legend"><span>● Employee group A</span><span>● Employee group B</span><span>● Other category</span></div></div><small class="hr-foot">Decorative graphic only — not measured percentages.</small></div>
+              </div>
+              <div class="hr-filters"><strong>Suggested report slicers</strong><div class="hr-filter-pills"><span>Department</span><span>Job role</span><span>Gender</span><span>Age group</span></div></div>
+            </div>
+            <h4>8. Conclusion</h4><p>This dashboard demonstrates how Power BI can summarize employee KPIs and make workforce/attrition analysis easier to explore. Update it with screenshots and confirmed numbers from the actual report.</p>
+          </div></details>
+        </article>
+
+      </div>
+    </div></section>
+
+    <section class="section" id="journey"><div class="container reveal">
+      <div class="section-head"><p class="eyebrow">My background</p><h2>Education & <span class="gradient-text">Experience</span></h2><p class="section-subtitle">Academic background and internship experience.</p></div>
+      <div class="timeline-grid">
+        <div class="surface-card timeline-card"><span class="timeline-date">2023–2026</span><h3>Bachelor of Computer Applications</h3><p>Mohan Babu University · CGPA 8.0</p></div>
+        <div class="surface-card timeline-card"><span class="timeline-date">Aug 2025 – Oct 2025</span><h3>Cyber Security Intern</h3><p>Codec Technologies Pvt. Ltd. · AICTE &amp; ICAC-approved internship programme.</p></div>
+        <div class="surface-card timeline-card"><span class="timeline-date">12th</span><h3>Sri Chaitanya College</h3><p>70%</p></div>
+        <div class="surface-card timeline-card"><span class="timeline-date">10th</span><h3>A.P.R.S School</h3><p>85%</p></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="contact"><div class="container reveal">
+      <div class="section-head"><p class="eyebrow">Let's connect</p><h2>Contact <span class="gradient-text">Me</span></h2><p class="section-subtitle">I am interested in entry-level Data Analyst and Junior Data Scientist opportunities. Feel free to contact me.</p></div>
+      <div class="contact-grid">
+        <div class="contact-items">
+          <div class="contact-item"><small>Email</small><a href="mailto:vikassagarkanuku55@gmail.com">vikassagarkanuku55@gmail.com</a></div>
+          <div class="contact-item"><small>Phone</small><a href="tel:+919391309547">+91 9391309547</a></div>
+          <div class="contact-item"><small>LinkedIn</small><a href="https://www.linkedin.com/in/vikas-sagar-kanuku-7605302b8" target="_blank" rel="noopener noreferrer">Visit LinkedIn profile ↗</a></div>
+          <div class="contact-item"><small>GitHub</small><a href="https://github.com/vikassagarkanuku55-max" target="_blank" rel="noopener noreferrer">Visit GitHub profile ↗</a></div>
+        </div>
+        <div class="surface-card">
+          <h3>Send me a message</h3><br>
+          <form class="contact-form" id="contactForm">
+            <input id="senderName" type="text" placeholder="Your name" autocomplete="name" required>
+            <input id="senderEmail" type="email" placeholder="Your email address" autocomplete="email" required>
+            <textarea id="senderMessage" placeholder="Write your message..." required></textarea>
+            <button class="btn btn-primary" type="submit">Prepare email ↗</button>
+          </form>
+          <p class="form-note">This form opens your email app with the message filled in. It does not store or send messages through a website server.</p>
+        </div>
+      </div>
+    </div></section>
+  </main>
+
+  <footer><div class="container">© <span id="year"></span> Kanuku Vikas Sagar · Built with HTML, CSS &amp; JavaScript.</div></footer>
+
+  <script>
+    // Mobile navigation menu
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Dark / light theme; dark is the default
+    const themeBtn = document.getElementById('themeBtn');
+    function setTheme(theme) {
+      document.body.classList.toggle('light-theme', theme === 'light');
+      themeBtn.textContent = theme === 'light' ? '☾ Dark' : '☀ Light';
+      try { localStorage.setItem('vikas-portfolio-theme', theme); } catch (error) { /* storage may be unavailable */ }
+    }
+    let initialTheme = 'dark';
+    try { initialTheme = localStorage.getItem('vikas-portfolio-theme') || 'dark'; } catch (error) { /* keep dark theme */ }
+    setTheme(initialTheme);
+    themeBtn.addEventListener('click', () => {
+      setTheme(document.body.classList.contains('light-theme') ? 'dark' : 'light');
+    });
+
+    // Typing animation
+    const roleElement = document.getElementById('typedRole');
+    const roles = ['Data Analyst', 'Junior Data Scientist', 'Machine Learning Enthusiast'];
+    let roleIndex = 0, charIndex = 0, deleting = false;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function typeRole() {
+      const current = roles[roleIndex];
+      if (!deleting) {
+        charIndex++;
+        roleElement.textContent = current.slice(0, charIndex);
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(typeRole, 1250);
+          return;
+        }
+      } else {
+        charIndex--;
+        roleElement.textContent = current.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+      setTimeout(typeRole, deleting ? 42 : 82);
+    }
+    if (reduceMotion) roleElement.textContent = roles[0];
+    else typeRole();
+
+    // Project category filters
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(item => item.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        projectCards.forEach(card => {
+          const categories = card.dataset.category.split(' ');
+          card.classList.toggle('is-hidden', filter !== 'all' && !categories.includes(filter));
+        });
+      });
+    });
+
+    // Reveal sections as they enter the viewport
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+
+    // Contact form: prepare an email in the visitor's email application
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('senderName').value.trim();
+      const email = document.getElementById('senderEmail').value.trim();
+      const message = document.getElementById('senderMessage').value.trim();
+      if (!name || !email || !message) {
+        alert('Please complete all fields.');
+        return;
+      }
+      const subject = encodeURIComponent('Portfolio enquiry from ' + name);
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+      window.location.href = 'mailto:vikassagarkanuku55@gmail.com?subject=' + subject + '&body=' + body;
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
